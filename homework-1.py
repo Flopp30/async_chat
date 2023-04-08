@@ -72,6 +72,7 @@ for word in words:
 # байтовового в строковый тип на кириллице.
 import multiprocessing
 import subprocess
+import chardet
 
 print(SEPARATORS + ' Task 5 ' + SEPARATORS)
 
@@ -83,7 +84,10 @@ web_sites = (
 
 def ping_and_decode(url):
     response = subprocess.run(['ping', '-c', '3', '-w', '3',  url], stdout=subprocess.PIPE)
-    decoded_result = response.stdout.decode('cp1251')  # декодируем байты в строку на кириллице
+
+    encoding = chardet.detect(response.stdout)['encoding']
+    decoded_result = response.stdout.decode(encoding)
+
     return decoded_result
 
 
@@ -112,6 +116,9 @@ words = (
 with open('test_file.txt', 'w') as f:
     f.writelines(words)
 
-with open('test_file.txt', 'r') as f:
-    print(f'File encoding: {f.encoding}\n'
-          f'File content:\n {f.read()}')
+with open('test_file.txt', 'rb') as f:
+    encoding = chardet.detect(f.read(300))['encoding']
+    print(f'File encoding: {encoding}')
+
+with open('test_file.txt', 'r', encoding=encoding) as f:
+    print(f'File content:\n{f.read()}')
