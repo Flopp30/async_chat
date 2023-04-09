@@ -120,5 +120,5 @@ with open('test_file.txt', 'rb') as f:
     encoding = chardet.detect(f.read(300))['encoding']
     print(f'File encoding: {encoding}')
 
-with open('test_file.txt', 'r', encoding=encoding) as f:
+with open('test_file.txt', 'r', encoding='UTF-8') as f:
     print(f'File content:\n{f.read()}')
