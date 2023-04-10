@@ -63,6 +63,7 @@ def get_data(file_names: Sequence[str]) -> list[list]:
                     parsed_data.append(re.search(regexp, text).group(1))
                 except IndexError:
                     print(f'The value of the regular expression: {regexp} was not found in the file {file_name}')
+                    parsed_data.append(None)
 
         main_data.append(parsed_data)
 
