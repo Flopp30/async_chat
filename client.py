@@ -5,7 +5,7 @@ from settings import ENCODING, MAX_PACKAGE_LENGTH
 from utils import send_message, Statuses, make_presence, get_args
 
 
-def send_request(host, port, request):
+def send_request(host, port, request) -> dict:
     # Отправка запроса на сервер
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     client_socket.connect((host, port))
