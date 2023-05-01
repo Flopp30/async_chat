@@ -1,0 +1,8 @@
+# -- Connection --
+DEFAULT_PORT = 7777
+DEFAULT_IP_ADDRESS = '127.0.0.1'
+MAX_CONNECTION_COUNT = 5
+MAX_PACKAGE_LENGTH = 1024
+
+# -- Messages --
+ENCODING = 'utf-8'
