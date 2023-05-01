@@ -1,4 +1,4 @@
-"""Ошибки"""
+"""Классы-исключения"""
 
 
 class IncorrectDataRecivedError(Exception):
